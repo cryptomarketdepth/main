@@ -129,6 +129,20 @@ packages:
       sha256: e816eca2bf42fda4da49c744b146a301ae0435380cc163ad2fbc889cf0a4e27f
   original:
     hackage: unix-2.7.2.2@sha256:55d8af3f25d2a92c86951a2d8fc47aebe80015a895c4f0e57320cfdae78dd7c1,3496
+- completed:
+    hackage: rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
+    pantry-tree:
+      size: 168
+      sha256: 930207a8350478df4e8dcf6957af8e3ac952282002f204eea3aac6baa0e9b975
+  original:
+    hackage: rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
+- completed:
+    hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
+    pantry-tree:
+      size: 212
+      sha256: 9b516d4195fcea22cd1f4335cfe210e88deca397ba7dacc494d5a2feb69e1af8
+  original:
+    hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
 snapshots:
 - completed:
     size: 524799

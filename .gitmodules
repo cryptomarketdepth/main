@@ -13,3 +13,9 @@
 [submodule "crypto-liquidity-db"]
 	path = crypto-liquidity-db
 	url = https://github.com/runeksvendsen/crypto-liquidity-db.git
+[submodule "crypto-orderbook-db-app"]
+	path = crypto-orderbook-db-app
+	url = https://github.com/runeksvendsen/crypto-orderbook-db-app.git
+[submodule "crypto-venues"]
+	path = crypto-venues
+	url = https://github.com/runeksvendsen/crypto-venues.git
