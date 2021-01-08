@@ -1,0 +1,15 @@
+[submodule "orderbook"]
+	path = orderbook
+	url = https://github.com/runeksvendsen/orderbook.git
+[submodule "bellman-ford"]
+	path = bellman-ford
+	url = https://github.com/runeksvendsen/bellman-ford.git
+[submodule "order-graph"]
+	path = order-graph
+	url = https://github.com/runeksvendsen/order-graph.git
+[submodule "crypto-orderbook-db"]
+	path = crypto-orderbook-db
+	url = https://github.com/runeksvendsen/crypto-orderbook-db.git
+[submodule "crypto-liquidity-db"]
+	path = crypto-liquidity-db
+	url = https://github.com/runeksvendsen/crypto-liquidity-db.git
