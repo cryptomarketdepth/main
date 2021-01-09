@@ -11,6 +11,8 @@ services:
       restart: always
       volumes:
          - liquidity-db-data:/data/db
+         - ./crypto-liquidity-db/pgsql/cloud_db.pgsql:/docker-entrypoint-initdb.d/1-schema.sql
+         - ./crypto-liquidity-db/pgsql/add-migrations-table.pgsql:/docker-entrypoint-initdb.d/2-schema.sql
       networks:
          - liquidity-backend-network
       ports: # for debugging
@@ -70,13 +72,15 @@ services:
       build: # TODO
          context: ./crypto-orderbook-db-app/
          dockerfile: Dockerfile
+      entrypoint:
+         /bin/sh -c "crypto-orderbook-db --max-retries 10 --db-max-retries 20 --db-conn \"$$DATABASE_URL\" --max-books 10"
       container_name: orderbook-service
       links:
          - liquidity-database
       depends_on:
          - liquidity-database
       environment:
-         - DATABASE_URL=postgresql://test:test@liquidity-database:5432/cloud_db_clone?sslmode=disable
+         - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
       networks:
          - liquidity-backend-network
 
