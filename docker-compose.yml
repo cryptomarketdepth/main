@@ -10,9 +10,9 @@ services:
          - POSTGRES_DB=liquidity
       restart: always
       volumes:
-         - liquidity-db-data:/data/db
          - ./crypto-liquidity-db/pgsql/cloud_db.pgsql:/docker-entrypoint-initdb.d/1-schema.sql
          - ./crypto-liquidity-db/pgsql/add-migrations-table.pgsql:/docker-entrypoint-initdb.d/2-schema.sql
+         - liquidity-db-data:/var/lib/postgresql/data/
       networks:
          - liquidity-backend-network
       ports: # for debugging
@@ -22,9 +22,7 @@ services:
 
    liquidity-service-create:
       restart: always
-      build:
-         context: ./crypto-liquidity-db/
-         dockerfile: Dockerfile
+      build: crypto-liquidity-db
       entrypoint: "crypto-liquidity-service-create"
       container_name: liquidity-service-create
       links:
@@ -38,9 +36,7 @@ services:
 
    liquidity-service-process:
       restart: always
-      build:
-         context: ./crypto-liquidity-db/
-         dockerfile: Dockerfile
+      build: crypto-liquidity-db
       entrypoint: "crypto-liquidity-service-process"
       container_name: liquidity-service-process
       links:
@@ -54,9 +50,7 @@ services:
 
    liquidity-web-api:
       restart: always
-      build:
-         context: ./crypto-liquidity-db/
-         dockerfile: Dockerfile
+      build: crypto-liquidity-db
       entrypoint: "crypto-liquidity-web-api"
       container_name: liquidity-web-api
       links:
@@ -69,10 +63,8 @@ services:
          - liquidity-backend-network
 
    orderbook-service:
-      build: # TODO
-         context: ./crypto-orderbook-db-app/
-         dockerfile: Dockerfile
-      entrypoint:
+      build: crypto-orderbook-db-app
+      entrypoint: # NB: contains debug arg "max-books"
          /bin/sh -c "crypto-orderbook-db --max-retries 10 --db-max-retries 20 --db-conn \"$$DATABASE_URL\" --max-books 10"
       container_name: orderbook-service
       links:
