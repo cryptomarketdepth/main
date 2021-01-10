@@ -57,7 +57,7 @@ services:
          - liquidity-database
       depends_on:
          - liquidity-database
-      environment:
+      environment: # TODO: different user with only read permission
          - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
       networks:
          - liquidity-backend-network
