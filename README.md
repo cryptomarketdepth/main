@@ -26,6 +26,9 @@ Atomically claims a job, performs the liquidity calculation described by the job
 
 Website backend HTTP API. Reads data from the database written by `liquidity-service-process` and returns it as JSON.
 
+## `liquidity-web`
+
+**TODO:** *frontend, probably written in Elm*
 
 # Packages
 
