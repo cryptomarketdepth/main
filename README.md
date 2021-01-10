@@ -32,7 +32,7 @@ Website backend HTTP API. Reads data from the database written by `liquidity-ser
 
 ## `crypto-orderbook-db-app`
 
-Contains `orderbook-service` executable. and the database schema used by this service.
+Contains `orderbook-service` executable.
 
 ## `order-graph`
 
@@ -48,7 +48,7 @@ A library for fetching order books from several different cryptocurrency exchang
 
 ## `crypto-orderbook-db`
 
-**TODO**
+Database schema for [`crypto-orderbook-db-app`](#crypto-orderbook-db-app).
 
 ## `bellman-ford`
 
