@@ -32,7 +32,7 @@ Website backend HTTP API. Reads data from the database written by `liquidity-ser
 
 ## `crypto-orderbook-db-app`
 
-Contains `orderbook-service` executable.
+Contains [`orderbook-service`](#orderbook-service) executable.
 
 ## `order-graph`
 
@@ -48,12 +48,12 @@ A library for fetching order books from several different cryptocurrency exchang
 
 ## `crypto-orderbook-db`
 
-Database schema for [`crypto-orderbook-db-app`](#crypto-orderbook-db-app).
+Database schema for [`orderbook-service`](#orderbook-service).
 
 ## `bellman-ford`
 
-**TODO**
+Translation of Sedgewick & Wayne's `BellmanFordSP.java` implementation into Haskell.
 
 ## `crypto-liquidity-db`
 
-**TODO**
+Contains both schema and executables for the services [`liquidity-service-create`](#liquidity-service-create), [`liquidity-service-process`](#liquidity-service-process), and  [`liquidity-web-api`](#liquidity-web-api).
