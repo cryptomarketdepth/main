@@ -45,3 +45,5 @@ COPY --from=builder /tmp/dist/crypto-orderbook-service /usr/local/bin/
 COPY --from=builder /tmp/dist/crypto-liquidity-web-api /usr/local/bin/
 COPY --from=builder /tmp/dist/crypto-liquidity-service-process /usr/local/bin/
 COPY --from=builder /tmp/dist/crypto-liquidity-service-create /usr/local/bin/
+
+COPY crypto-liquidity-db/pgsql ./pgsql
