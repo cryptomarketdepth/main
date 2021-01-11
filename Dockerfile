@@ -10,6 +10,7 @@ RUN apt-get update \
 RUN curl -sSL https://get.haskellstack.org/ | sh
 
 # matches resolver in stack.yaml
+# this step fails if performed after copying stack.yaml
 RUN stack --resolver lts-14.17 setup
 # Pre-install deps so we can re-use cached layers
 # https://github.com/freebroccolo/docker-haskell/issues/54#issuecomment-283222910

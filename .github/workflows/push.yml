@@ -14,5 +14,5 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Build the stack
+      - name: docker-compose build
         run: docker-compose up -d --build
