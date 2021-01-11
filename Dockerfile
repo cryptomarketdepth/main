@@ -12,7 +12,6 @@ RUN curl -sSL https://get.haskellstack.org/ | sh
 # Pre-install deps so we can re-use cached layers
 # https://github.com/freebroccolo/docker-haskell/issues/54#issuecomment-283222910
 COPY stack.yaml ./
-COPY package.yaml ./
 RUN stack setup
 
 # required by dependency: gargoyle-postgresql-nix
