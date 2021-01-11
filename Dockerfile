@@ -20,13 +20,15 @@ COPY cabal.project ./
 COPY cabal.project.freeze ./
 COPY stack.yaml ./
 COPY stack.yaml.lock ./
+
+COPY orderbook ./orderbook
 COPY bellman-ford ./bellman-ford
-COPY crypto-liquidity-db ./crypto-liquidity-db
+COPY crypto-venues ./crypto-venues
+
+COPY order-graph ./order-graph
 COPY crypto-orderbook-db ./crypto-orderbook-db
 COPY crypto-orderbook-db-app ./crypto-orderbook-db-app
-COPY crypto-venues ./crypto-venues
-COPY order-graph ./order-graph
-COPY orderbook ./orderbook
+COPY crypto-liquidity-db ./crypto-liquidity-db
 
 RUN stack install --dependencies-only
 
