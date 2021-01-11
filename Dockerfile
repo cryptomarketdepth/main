@@ -12,14 +12,9 @@ RUN curl -sSL https://get.haskellstack.org/ | sh
 # matches resolver in stack.yaml
 # this step fails if performed after copying stack.yaml
 RUN stack --resolver lts-14.17 setup
-# Pre-install deps so we can re-use cached layers
-# https://github.com/freebroccolo/docker-haskell/issues/54#issuecomment-283222910
-COPY stack.yaml ./
 
 # required by dependency: gargoyle-postgresql-nix
 ENV PATH="/usr/lib/postgresql/9.5/bin:$PATH"
-
-RUN stack install --dependencies-only
 
 COPY cabal.project ./
 COPY cabal.project.freeze ./
@@ -32,6 +27,8 @@ COPY crypto-orderbook-db-app ./
 COPY crypto-venues ./
 COPY order-graph ./
 COPY orderbook ./
+
+RUN stack install --dependencies-only
 
 RUN stack build --copy-bins --local-bin-path /tmp/dist/
 
