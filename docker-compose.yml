@@ -12,7 +12,7 @@ services:
       volumes:
          - ./crypto-liquidity-db/pgsql/cloud_db.pgsql:/docker-entrypoint-initdb.d/1-schema.sql
          - ./crypto-liquidity-db/pgsql/add-migrations-table.pgsql:/docker-entrypoint-initdb.d/2-schema.sql
-         - liquidity-db-data:/var/lib/postgresql/data/
+         - liquidity-db-data-v1:/var/lib/postgresql/data/
       networks:
          - liquidity-backend-network
       ports: # for debugging
@@ -21,6 +21,7 @@ services:
          - "5432"
 
    liquidity-service-create:
+      restart: always
       build: .
       entrypoint: crypto-liquidity-service-create
       container_name: liquidity-service-create
@@ -34,6 +35,7 @@ services:
          - liquidity-backend-network
 
    liquidity-service-process:
+      restart: always
       build: .
       entrypoint: crypto-liquidity-service-process
       container_name: liquidity-service-process
@@ -79,4 +81,4 @@ networks:
       driver: bridge
 
 volumes:
-   liquidity-db-data:
+   liquidity-db-data-v1:
