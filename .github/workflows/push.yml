@@ -27,4 +27,5 @@ jobs:
 
         # Try for 5 minutes until endpoint returns HTTP success
       - name: test
-        run: docker run --network container:liquidity-web-api appropriate/curl --verbose --retry 60 --retry-delay 5 --retry-connrefused http://localhost:8123/test
+        # source: https://unix.stackexchange.com/a/82610/12154
+        run: docker run --network container:liquidity-web-api appropriate/curl /bin/sh -c 'for i in $(seq 1 60); do [ $i -gt 1 ] && sleep 5; curl --verbose --fail --retry-connrefused http://localhost:8123/test && s=0 && break || s=$?; done; (exit $s)'
