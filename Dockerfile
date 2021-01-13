@@ -21,16 +21,24 @@ COPY cabal.project.freeze ./
 COPY stack.yaml ./
 COPY stack.yaml.lock ./
 
+# copy dependency information
+COPY orderbook/package.yaml ./orderbook/package.yaml
+COPY bellman-ford/package.yaml ./bellman-ford/package.yaml
+COPY crypto-venues/package.yaml ./crypto-venues/package.yaml
+COPY order-graph/package.yaml ./order-graph/package.yaml
+COPY crypto-orderbook-db/package.yaml ./crypto-orderbook-db/package.yaml
+COPY crypto-orderbook-db-app/package.yaml ./crypto-orderbook-db-app/package.yaml
+COPY crypto-liquidity-db/package.yaml ./crypto-liquidity-db/package.yaml
+
+RUN stack install --dependencies-only
+
 COPY orderbook ./orderbook
 COPY bellman-ford ./bellman-ford
 COPY crypto-venues ./crypto-venues
-
 COPY order-graph ./order-graph
 COPY crypto-orderbook-db ./crypto-orderbook-db
 COPY crypto-orderbook-db-app ./crypto-orderbook-db-app
 COPY crypto-liquidity-db ./crypto-liquidity-db
-
-RUN stack install --dependencies-only
 
 RUN stack build --copy-bins --local-bin-path /tmp/dist/
 
