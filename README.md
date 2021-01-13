@@ -20,6 +20,18 @@ The service [`liquidity-service-process`](#liquidity-service-process) service is
 docker-compose up --scale liquidity-service-process=10
 ```
 
+# Testing
+
+1. Build and run all services using `docker-compose up -d --build`
+
+2. Run the following command:
+
+```
+docker run --network container:liquidity-web-api appropriate/curl --fail -s --retry 60 --retry-delay 5 --retry-connrefused http://localhost:8123/test
+```
+
+See the [GitHub action file](https://github.com/cryptomarketdepth-com/main/blob/main/.github/workflows/push.yml) for more details.
+
 # Services
 
 
