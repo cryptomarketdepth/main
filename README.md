@@ -6,6 +6,20 @@ This website will track the liquidity of cryptocurrencies over time. Specificall
 
 For further details see [this paper](https://github.com/runeksvendsen/order-graph/blob/26552b74f04fadc36f6ec3cfc3bccf612e9c5732/doc/RuneKSvendsen-CryptocurrencyLiquidity-Project2019.pdf).
 
+# Running
+
+Services can be run using `docker-compose`. The following command builds service images and runs the services:
+
+```
+docker-compose up --build
+```
+
+The service [`liquidity-service-process`](#liquidity-service-process) service is highly scalable. You can run multiple instances of this service to increase processing throughput like so:
+
+```
+docker-compose up --scale liquidity-service-process=10
+```
+
 # Services
 
 
