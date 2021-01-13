@@ -20,7 +20,7 @@ jobs:
         run: docker-compose pull
 
       - name: docker-compose clean
-        run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data && exit 1
+        run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data && exit 0
 
       - name: docker-compose build
         run: docker-compose up -d --build
