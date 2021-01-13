@@ -19,10 +19,12 @@ jobs:
       - name: Pull Docker images
         run: docker-compose pull
 
-      # source: https://github.com/satackey/action-docker-layer-caching#docker-compose
-      - name: Cache Docker layers
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
+      - name: docker-compose clean
+        run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data
 
       - name: docker-compose build
         run: docker-compose up -d --build
+
+        # Try for 5 minutes until endpoint returns HTTP success
+      - name: test
+        run: docker run --network container:liquidity-web-api appropriate/curl --fail -s --retry 60 --retry-delay 5 --retry-connrefused http://localhost:8123/test

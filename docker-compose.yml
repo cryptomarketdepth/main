@@ -61,6 +61,8 @@ services:
          - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
       networks:
          - liquidity-backend-network
+      ports:
+         - "8000:8000"
 
    orderbook-service:
       build: .
@@ -73,6 +75,18 @@ services:
          - liquidity-database
       environment:
          - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
+      networks:
+         - liquidity-backend-network
+
+   test-service: # for testing via GitHub actions script
+      build: .
+      entrypoint:
+         /bin/sh -c "crypto-liquidity-test http://localhost:8000"
+      container_name: test-service
+      links:
+         - liquidity-web-api
+      depends_on:
+         - liquidity-web-api
       networks:
          - liquidity-backend-network
 
