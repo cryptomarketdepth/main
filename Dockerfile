@@ -35,6 +35,7 @@ RUN stack install --dependencies-only
 COPY orderbook ./orderbook
 COPY bellman-ford ./bellman-ford
 COPY crypto-venues ./crypto-venues
+
 COPY order-graph ./order-graph
 COPY crypto-orderbook-db ./crypto-orderbook-db
 COPY crypto-orderbook-db-app ./crypto-orderbook-db-app
