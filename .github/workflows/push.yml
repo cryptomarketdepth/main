@@ -27,4 +27,4 @@ jobs:
 
         # Try for 5 minutes until endpoint returns HTTP success
       - name: test
-        run: docker run --network container:liquidity-web-api appropriate/curl --fail -s --retry 60 --retry-delay 5 --retry-connrefused http://localhost:8123/test
+        run: docker run --network container:liquidity-web-api appropriate/curl --verbose --no-progress-meter --retry 60 --retry-delay 5 --retry-connrefused http://localhost:8123/test
