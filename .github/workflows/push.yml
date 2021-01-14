@@ -26,8 +26,8 @@ jobs:
       - name: Cache docker images
         # save a list of existing images + restore cache
         # after build: store cache
-        uses: satackey/action-docker-layer-caching@v0.0.1
-        continue-on-error: true # ignore failure of storing a single cache item
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true # action shouldn't fail because cache-step fails
 
       - name: docker-compose build && run
         run: docker-compose up -d --build --scale liquidity-service-process=10
