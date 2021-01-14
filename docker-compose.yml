@@ -38,7 +38,6 @@ services:
       restart: always
       build: .
       entrypoint: crypto-liquidity-service-process
-      container_name: liquidity-service-process
       links:
          - liquidity-database
       depends_on:
