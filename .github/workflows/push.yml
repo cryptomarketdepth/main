@@ -22,12 +22,12 @@ jobs:
       - name: docker-compose clean
         run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data || exit 0
 
-        # source: https://github.com/marketplace/actions/docker-layer-caching
-      - name: Cache docker images
-        # save a list of existing images + restore cache
-        # after build: store cache
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true # action shouldn't fail because cache-step fails
+      #   # source: https://github.com/marketplace/actions/docker-layer-caching
+      # - name: Cache docker images
+      #   # save a list of existing images + restore cache
+      #   # after build: store cache
+      #   uses: satackey/action-docker-layer-caching@v0.0.11
+      #   continue-on-error: true # action shouldn't fail because cache-step fails
 
       - name: docker-compose build && run
         run: docker-compose up -d --build --scale liquidity-service-process=10
