@@ -25,6 +25,9 @@ jobs:
       - name: docker-compose build && run
         run: docker-compose up -d --build --scale liquidity-service-process=10
 
+      - name: debug print "docker images"
+        run: docker images
+
         # Try for 5 minutes until endpoint returns HTTP success
       - name: test
         # source: https://unix.stackexchange.com/a/82610/12154
