@@ -23,7 +23,7 @@ jobs:
         run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data || exit 0
 
       - name: docker-compose build && run
-        run: docker-compose up -d --build
+        run: docker-compose up -d --build --scale liquidity-service-process=10
 
         # Try for 5 minutes until endpoint returns HTTP success
       - name: test
