@@ -24,6 +24,7 @@ services:
       restart: always
       build: .
       entrypoint: crypto-liquidity-service-create
+      container_name: liquidity-service-create
       links:
          - liquidity-database
       depends_on:
@@ -37,6 +38,7 @@ services:
       restart: always
       build: .
       entrypoint: crypto-liquidity-service-process
+      container_name: liquidity-service-process
       links:
          - liquidity-database
       depends_on:
@@ -50,6 +52,7 @@ services:
       restart: always
       build: .
       entrypoint: crypto-liquidity-web-api
+      container_name: liquidity-web-api
       links:
          - liquidity-database
       depends_on:
@@ -67,6 +70,7 @@ services:
       build: .
       entrypoint: # NB: contains debug arg "max-books"
          /bin/sh -c "crypto-orderbook-service --max-retries 10 --db-max-retries 20 --db-conn \"$$DATABASE_URL\" --max-books 10"
+      container_name: orderbook-service
       links:
          - liquidity-database
       depends_on:
@@ -80,6 +84,7 @@ services:
       build: .
       entrypoint:
          /bin/sh -c "crypto-liquidity-test http://liquidity-web-api:8000"
+      container_name: test-service
       links:
          - liquidity-web-api
       depends_on:
