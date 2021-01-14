@@ -63,6 +63,8 @@ services:
          - liquidity-backend-network
       ports:
          - "8000:8000"
+      expose:
+         - "8000"
 
    orderbook-service:
       build: .
@@ -81,7 +83,7 @@ services:
    test-service: # for testing via GitHub actions script
       build: .
       entrypoint:
-         /bin/sh -c "crypto-liquidity-test http://localhost:8000"
+         /bin/sh -c "crypto-liquidity-test http://liquidity-web-api:8000"
       container_name: test-service
       links:
          - liquidity-web-api
@@ -89,6 +91,8 @@ services:
          - liquidity-web-api
       networks:
          - liquidity-backend-network
+      ports:
+         - "8123:8123"
 
 networks:
    liquidity-backend-network:
