@@ -39,3 +39,7 @@ jobs:
       - name: test
         # source: https://unix.stackexchange.com/a/82610/12154
         run: docker run --network container:test-service alpine/httpie /bin/sh -c 'for i in $(seq 1 60); do [ $i -gt 1 ] && sleep 5; http --check-status --ignore-stdin --body http://localhost:8123/test && s=0 && break || s=$?; done; (exit $s)'
+
+      - name: docker-compose logs
+        if: ${{ failure() }}
+        run: docker-compose logs
