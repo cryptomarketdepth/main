@@ -15,31 +15,22 @@ jobs:
         with:
           submodules: true
 
-      # source: https://github.com/satackey/action-docker-layer-caching#docker-compose
-      - name: Pull Docker images
-        run: docker-compose pull
-
-      - name: docker-compose clean
-        run: docker-compose down && docker volume rm cryptomarketdepthcom_liquidity-db-data || exit 0
-
-      #   # source: https://github.com/marketplace/actions/docker-layer-caching
-      # - name: Cache docker images
-      #   # save a list of existing images + restore cache
-      #   # after build: store cache
-      #   uses: satackey/action-docker-layer-caching@v0.0.11
-      #   continue-on-error: true # action shouldn't fail because cache-step fails
-
       - name: docker-compose build && run
         run: docker-compose up -d --build --scale liquidity-service-process=10
 
-      - name: debug print "docker images"
-        run: docker images
-
         # Try for 5 minutes until endpoint returns HTTP success
-      - name: test
+      - name: run tests
         # source: https://unix.stackexchange.com/a/82610/12154
-        run: docker run --network container:test-service --entrypoint /bin/sh alpine/httpie -c 'for i in $(seq 1 60); do [ $i -gt 1 ] && sleep 5; http --check-status --ignore-stdin --body http://localhost:8123/test && s=0 && break || s=$?; done; (exit $s)'
+        run: >
+          /bin/sh -c "docker run --network container:test-service --entrypoint /bin/sh alpine/httpie -c
+          'for i in $(seq 1 60);
+            do
+            [ $i -gt 1 ] && sleep 5;
+            http --check-status --ignore-stdin --body http://localhost:8123/test && s=0 && break || s=$?;
+          done;
+          (exit $s)'"
 
+        # It's nice to see logs. Especially if the tests fail.
       - name: docker-compose logs
         if: ${{ always() }}
         run: docker-compose logs
