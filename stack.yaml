@@ -13,6 +13,10 @@ allow-newer: true
 
 extra-deps:
 - logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
+- git: https://github.com/runeksvendsen/beam.git
+  commit: ddeccf22e0dc580d8fff485f8f376ca60fe6c98a
+  subdirs:
+    - beam-postgres
 - git: https://github.com/runeksvendsen/mono-traversable.git
   commit: 5bcff3e91337c071a7855be0691eae1bc91f35b5
   subdirs:
@@ -21,7 +25,6 @@ extra-deps:
 - beam-migrate-0.5.0.0
 - beam-automigrate-0.1.2.0
 - beam-core-0.9.0.0@sha256:e5b1cb4d5b8a8a166f3373e8718672a3884feb9a5a133404b047b0af76538023,5282
-- beam-postgres-0.5.0.0@sha256:3008f802b25fffaee2edf7f8f840a073ee630049031cda0b4ea7912b6656c813,4333
 - gargoyle-postgresql-connect-0.1.0.0@sha256:b33e13dcaea7e2387241bbe57f4ec67b8715ee4e44b68e7ddb3c35dd5da74f14,1242
 - gargoyle-0.1.1.0@sha256:c8fafaf0da5be7d222945fa39e10b04d8cc9b49b02b869221eb857ea04c2bd76,1629
 - gargoyle-postgresql-0.2.0.1@sha256:776b40cca3a9d4222212baecb364da203e769d5046dc3079aa05749164448097,3679
