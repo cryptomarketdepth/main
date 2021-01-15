@@ -38,7 +38,6 @@ services:
       restart: always
       build: .
       entrypoint: crypto-liquidity-service-process
-      container_name: liquidity-service-process
       links:
          - liquidity-database
       depends_on:
@@ -61,6 +60,10 @@ services:
          - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
       networks:
          - liquidity-backend-network
+      ports:
+         - "8000:8000"
+      expose:
+         - "8000"
 
    orderbook-service:
       build: .
@@ -75,6 +78,20 @@ services:
          - DATABASE_URL=postgresql://test:test@liquidity-database:5432/liquidity?sslmode=disable
       networks:
          - liquidity-backend-network
+
+   test-service: # for testing via GitHub actions script
+      build: .
+      entrypoint:
+         /bin/sh -c "crypto-liquidity-test http://liquidity-web-api:8000"
+      container_name: test-service
+      links:
+         - liquidity-web-api
+      depends_on:
+         - liquidity-web-api
+      networks:
+         - liquidity-backend-network
+      ports:
+         - "8123:8123"
 
 networks:
    liquidity-backend-network:

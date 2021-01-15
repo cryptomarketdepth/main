@@ -20,6 +20,12 @@ The service [`liquidity-service-process`](#liquidity-service-process) service is
 docker-compose up --scale liquidity-service-process=10
 ```
 
+# Testing
+
+1. Build and run all services using `docker-compose up -d --build`
+
+2. Run the command from the "run tests"-step in [the GitHub Actions file](.github/workflows/push.yml).
+
 # Services
 
 
