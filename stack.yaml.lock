@@ -12,19 +12,6 @@ packages:
   original:
     hackage: logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
 - completed:
-    subdir: beam-postgres
-    name: beam-postgres
-    version: 0.5.0.0
-    git: https://github.com/runeksvendsen/beam.git
-    pantry-tree:
-      size: 2702
-      sha256: e2330fdc9022708d78152162a74c127f884725c76d5cc9adbbb5f5568cf58240
-    commit: ddeccf22e0dc580d8fff485f8f376ca60fe6c98a
-  original:
-    subdir: beam-postgres
-    git: https://github.com/runeksvendsen/beam.git
-    commit: ddeccf22e0dc580d8fff485f8f376ca60fe6c98a
-- completed:
     subdir: mutable-containers
     name: mutable-containers
     version: 0.3.4
@@ -65,6 +52,13 @@ packages:
       sha256: e54dabae556fcac9079587adcce1b2bb107c196688c476dabdd84ca86ad556af
   original:
     hackage: beam-core-0.9.0.0@sha256:e5b1cb4d5b8a8a166f3373e8718672a3884feb9a5a133404b047b0af76538023,5282
+- completed:
+    hackage: beam-postgres-0.5.0.0@sha256:3008f802b25fffaee2edf7f8f840a073ee630049031cda0b4ea7912b6656c813,4333
+    pantry-tree:
+      size: 1692
+      sha256: 650c0241326528b9664756e7822edf61d972f30f21f42d4318c7e885aa86e38a
+  original:
+    hackage: beam-postgres-0.5.0.0@sha256:3008f802b25fffaee2edf7f8f840a073ee630049031cda0b4ea7912b6656c813,4333
 - completed:
     hackage: gargoyle-postgresql-connect-0.1.0.0@sha256:b33e13dcaea7e2387241bbe57f4ec67b8715ee4e44b68e7ddb3c35dd5da74f14,1242
     pantry-tree:
