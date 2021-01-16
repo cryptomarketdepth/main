@@ -24,7 +24,6 @@ jobs:
         run: docker run --network container:test-service --entrypoint /bin/sh alpine/httpie -c 'for i in $(seq 1 60); do [ $i -gt 1 ] && sleep 5; http --check-status --ignore-stdin --body http://localhost:8123/test && s=0 && break || s=$?; done; (exit $s)'
 
       - name: "test: all services running"
-        # source: https://unix.stackexchange.com/a/82610/12154
         run: /bin/sh test/all_services_running.sh
 
         # It's nice to see logs. Especially if the tests fail.
