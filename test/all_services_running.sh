@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# RUNNING_SERVICES=$(docker-compose ps | grep Up | awk '{print $1}')
-RUNNING_SERVICES=$(cat test-output.txt)
+RUNNING_SERVICES=$(docker-compose ps | grep Up | awk '{print $1}')
 ALL_SERVICES="database liquidity-service-create liquidity-service-process liquidity-web-api orderbook-service test-service"
 
 # Iterate the string variable using for loop
