@@ -1,8 +1,8 @@
 # Overview
 
-All the code for the (as-of-yet-unlaunched) cryptomarketdepth.com website.
+Code for the [cryptomarketdepth.com](https://cryptomarketdepth.com/) website.
 
-This website will track the liquidity of cryptocurrencies over time. Specifically, it can answer the question "*how much of a given cryptocurrency can I buy/sell right now while not moving its price by more than some specified percentage?*".
+This website tracks the liquidity of cryptocurrencies over time. Specifically, it can answer the question "*how much of a given cryptocurrency can I buy/sell right now while not moving its price by more than some specified percentage?*".
 
 For further details see [this paper](https://github.com/runeksvendsen/order-graph/blob/26552b74f04fadc36f6ec3cfc3bccf612e9c5732/doc/RuneKSvendsen-CryptocurrencyLiquidity-Project2019.pdf).
 
