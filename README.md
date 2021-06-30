@@ -1,3 +1,5 @@
+[![Docker Compose Actions Workflow](https://github.com/cryptomarketdepth/main/actions/workflows/push.yml/badge.svg?branch=main)](https://github.com/cryptomarketdepth/main/actions/workflows/push.yml)
+
 # Overview
 
 Code for the [cryptomarketdepth.com](https://cryptomarketdepth.com/) website.
