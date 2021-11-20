@@ -19,3 +19,6 @@
 [submodule "crypto-venues"]
 	path = crypto-venues
 	url = https://github.com/runeksvendsen/crypto-venues.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/runeksvendsen/crypto-liquidity-frontend.git
