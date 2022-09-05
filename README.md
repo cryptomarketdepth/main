@@ -51,6 +51,10 @@ Website backend HTTP API. Reads data from the database written by `liquidity-ser
 
 # Packages
 
+## `frontend`
+
+Frontend code for the public website https://cryptomarketdepth.com/
+
 ## `crypto-orderbook-db-app`
 
 Contains [`orderbook-service`](#orderbook-service) executable.
