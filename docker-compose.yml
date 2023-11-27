@@ -82,7 +82,7 @@ services:
    test-service: # for testing via GitHub actions script
       build: .
       entrypoint:
-         /bin/sh -c "crypto-liquidity-test http://liquidity-web-api:8000"
+         /bin/sh -c "crypto-liquidity-db-test http://liquidity-web-api:8000"
       container_name: test-service
       links:
          - liquidity-web-api
