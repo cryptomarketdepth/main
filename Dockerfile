@@ -41,9 +41,10 @@ COPY crypto-orderbook-db ./crypto-orderbook-db
 COPY crypto-orderbook-db-app ./crypto-orderbook-db-app
 COPY crypto-liquidity-db ./crypto-liquidity-db
 
-RUN stack build --test --no-run-tests --copy-bins --local-bin-path /tmp/dist/
-# copy crypto-liquidity-db test-suite executable to /tmp/dist/
-RUN cp "$(find . -name crypto-liquidity-db-test -type f)" /tmp/dist/
+# build and copy executables for all packages
+RUN stack build --copy-bins --local-bin-path /tmp/dist/
+# build and copy the test suite executable for the crypto-liquidity-db package
+RUN stack build --test --no-run-tests --copy-bins --local-bin-path /tmp/dist/ crypto-liquidity-db
 
 # RUNTIME
 FROM ubuntu:16.04 as runtime
