@@ -57,4 +57,7 @@ RUN apt-get update \
 # copy all executables
 COPY --from=builder /tmp/dist/* /usr/local/bin/
 
+# copy crypto-liquidity-db test suite data
+COPY crypto-liquidity-db/test/data ./test/data
+
 COPY crypto-liquidity-db/pgsql ./pgsql
