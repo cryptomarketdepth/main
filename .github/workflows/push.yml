@@ -16,7 +16,7 @@ jobs:
           submodules: true
 
       - name: docker-compose build && run && test
-        run: docker-compose up -d --build --scale liquidity-service-process=10 --exit-code-from test-service
+        run: docker-compose up --build --scale liquidity-service-process=10 --exit-code-from test-service
 
       - name: "test: all services running"
         run: /bin/sh test/all_services_running.sh
