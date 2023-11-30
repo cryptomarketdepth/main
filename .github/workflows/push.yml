@@ -15,13 +15,11 @@ jobs:
         with:
           submodules: true
 
-      - name: docker-compose build && run
-        run: docker-compose up -d --build --scale liquidity-service-process=10
+      - name: docker-compose build
+        run: docker-compose build
 
-        # Try for 5 minutes until endpoint returns HTTP success
-      - name: run tests
-        # source: https://unix.stackexchange.com/a/82610/12154
-        run: docker run --network container:test-service --entrypoint /bin/sh alpine/httpie -c 'for i in $(seq 1 60); do [ $i -gt 1 ] && sleep 5; http --check-status --ignore-stdin --body http://localhost:8123/test && s=0 && break || s=$?; done; (exit $s)'
+      - name: docker-compose run && test
+        run: docker-compose up --scale liquidity-service-process=10 --exit-code-from test-service
 
       - name: "test: all services running"
         run: /bin/sh test/all_services_running.sh

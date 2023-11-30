@@ -82,12 +82,14 @@ services:
    test-service: # for testing via GitHub actions script
       build: .
       entrypoint:
-         /bin/sh -c "crypto-liquidity-test http://liquidity-web-api:8000"
+         /bin/sh -c "crypto-liquidity-db-test --no-setup"
       container_name: test-service
       links:
          - liquidity-web-api
       depends_on:
          - liquidity-web-api
+      environment:
+         - SERVER_ADDRESS=http://liquidity-web-api:8000
       networks:
          - liquidity-backend-network
       ports:

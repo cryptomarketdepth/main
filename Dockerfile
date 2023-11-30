@@ -41,7 +41,12 @@ COPY crypto-orderbook-db ./crypto-orderbook-db
 COPY crypto-orderbook-db-app ./crypto-orderbook-db-app
 COPY crypto-liquidity-db ./crypto-liquidity-db
 
+# build and copy executables for all packages
 RUN stack build --copy-bins --local-bin-path /tmp/dist/
+# build the test suite executable for the crypto-liquidity-db package
+RUN stack build --test --no-run-tests crypto-liquidity-db
+# copy the crypto-liquidity-db test suite executable to /tmp/dist/
+RUN cp "$(find . -name crypto-liquidity-db-test -type f)" /tmp/dist/
 
 # RUNTIME
 FROM ubuntu:16.04 as runtime
@@ -50,10 +55,9 @@ RUN apt-get update \
   && apt-get install -y ca-certificates libpq-dev postgresql=9.5+173ubuntu0.3 postgresql-common libgmp10
 
 # copy all executables
-COPY --from=builder /tmp/dist/crypto-orderbook-service /usr/local/bin/
-COPY --from=builder /tmp/dist/crypto-liquidity-web-api /usr/local/bin/
-COPY --from=builder /tmp/dist/crypto-liquidity-service-process /usr/local/bin/
-COPY --from=builder /tmp/dist/crypto-liquidity-service-create /usr/local/bin/
-COPY --from=builder /tmp/dist/crypto-liquidity-test /usr/local/bin/
+COPY --from=builder /tmp/dist/* /usr/local/bin/
+
+# copy crypto-liquidity-db test suite data
+COPY crypto-liquidity-db/test/data ./test/data
 
 COPY crypto-liquidity-db/pgsql ./pgsql
